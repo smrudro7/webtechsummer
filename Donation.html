@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Donation Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #fafafccc;
+            padding: 20px;
+        }
+
+        form {
+            max-width: 800px;
+            margin: auto;
+            background: #3c5e3e81;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(156, 149, 149, 0.1);
+        }
+
+        h2 {
+            color: #cc0000;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #817878;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .donation-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .btn-group {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background: #6137af;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #c5b9b9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="donationForm">
+        <div class="section">
+            <h2>Donor Information</h2>
+            <label>First Name* <input type="text" id="first_name" name="first_name" required></label>
+            <label>Last Name* <input type="text" id="last_name" name="last_name" required></label>
+            <label>Company <input type="text" name="company"></label>
+            <label>Address 1* <input type="text" name="address1" required></label>
+            <label>Address 2 <input type="text" name="address2"></label>
+            <label>City* <input type="text" name="city" required></label>
+
+            <label>State*
+                <select name="state" required>
+                    <option value="">Select a State</option>
+                    <option value="WDC">Washington DC</option>
+                    <option value="TR">Toronto</option>
+                </select>
+            </label>
+
+            <label>Zip Code* <input type="text" name="zip" required></label>
+            <label>Country*
+                <select name="country" required>
+                    <option value="">Select a Country</option>
+                    <option value="US">USA</option>
+                    <option value="CA">Canada</option>
+                </select>
+            </label>
+
+            <label>Phone <input type="text" name="phone"></label>
+            <label>Fax <input type="text" name="fax"></label>
+            <label>Email* <input type="email" id="email" name="email" required></label>
+
+            <label>Donation Amount*</label>
+            <div class="donation-options">
+                <label><input type="radio" name="donation" value="0" required>$0</label>
+                <label><input type="radio" name="donation" value="50">$50</label>
+                <label><input type="radio" name="donation" value="75">$75</label>
+                <label><input type="radio" name="donation" value="100">$100</label>
+                <label><input type="radio" name="donation" value="250">$250</label>
+                <label><input type="radio" name="donation" value="other">Other</label>
+            </div>
+            <label>Other Amount $ <input type="text" id="other_amount" name="other_amount"></label>
+
+            <label><input type="checkbox"> I am interested in giving on a regular basis.</label>
+        </div>
+
+        <div class="section">
+            <h2>Honorarium and Memorial Donation Information</h2>
+            <label>
+                I would like to make this donation:
+                <input type="radio" name="honor_type" value="honor"> To Honor
+                <input type="radio" name="honor_type" value="memory"> In Memory of
+            </label>
+            <label>Name <input type="text" name="honoree_name"></label>
+            <label>Acknowledge Donation to <input type="text" name="acknowledge_to"></label>
+            <label>Address <input type="text" name="honor_address"></label>
+            <label>City <input type="text" name="honor_city"></label>
+            <label>State
+                <select name="honor_state">
+                    <option value="">Select a State</option>
+                    <option value="WDC">Washington DC</option>
+                    <option value="TR">Toronto</option>
+                </select>
+            </label>
+            <label>Zip <input type="text" name="honor_zip"></label>
+        </div>
+
+        <div class="section">
+            <h2>Additional Information</h2>
+            <label>Name <input type="text" name="pub_name"></label>
+            <label><input type="checkbox"> I would like my gift to remain anonymous</label>
+            <label><input type="checkbox"> My employer offers a matching gift program. I will mail the matching
+                form.</label>
+            <label><input type="checkbox"> Please save costs by not mailing a thank-you letter.</label>
+
+            <h3>Comments</h3>
+            <textarea name="comments" rows="4" placeholder="Your message here..."></textarea>
+
+            <label>How may we contact you?</label>
+            <label><input type="checkbox"> Email</label>
+            <label><input type="checkbox"> Postal Mail</label>
+            <label><input type="checkbox"> Telephone</label>
+            <label><input type="checkbox"> Fax</label>
+
+            <label><input type="checkbox"> I would like information about volunteering</label>
+            <input type="text" name="volunteer_interest">
+        </div>
+
+        <div class="btn-group">
+            <button type="reset">Reset</button>
+            <button type="submit">Continue</button>
+        </div>
+    </form>
+
+    <p>Donate online with confidence. You are on a secure server.</p>
+    <p>If you have any problems or questions, please contact support.</p>
+
+    <script>
+        document.getElementById("donationForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const firstName = document.getElementById("first_name").value.trim();
+            const lastName = document.getElementById("last_name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const donationRadios = document.getElementsByName("donation");
+            let donationAmount = "";
+
+            if (firstName === "" || lastName === "" || email === "") {
+                alert("Please fill in all required fields: First Name, Last Name, and Email.");
+                return;
+            }
+
+            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            let donationSelected = false;
+            for (let radio of donationRadios) {
+                if (radio.checked) {
+                    donationSelected = true;
+                    donationAmount = radio.value;
+                    break;
+                }
+            }
+
+            if (!donationSelected) {
+                alert("Please select a donation amount.");
+                return;
+            }
+
+            // If "Other" selected, validate and use other amount input
+            if (donationAmount === "other") {
+                const otherValue = document.getElementById("other_amount").value.trim();
+                if (otherValue === "" || isNaN(otherValue) || Number(otherValue) <= 0) {
+                    alert("Please enter a valid other amount greater than 0.");
+                    return;
+                }
+                donationAmount = otherValue;
+            }
+
+            // Redirect to ThankYou.html with firstName and donationAmount as URL params
+            window.location.href = `ThankYou.html?name=${encodeURIComponent(firstName)}&amount=${encodeURIComponent(donationAmount)}`;
+        });
+    </script>
+
+</body>
+
+</html>
